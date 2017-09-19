@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ruby on Rails Tutorial Sample App | <%= yield(:title) %></title>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta name="description" content="<%= meta_desc(yield(:title)) %>">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
