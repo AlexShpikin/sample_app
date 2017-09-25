@@ -1,13 +1,16 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
-    <section>
+    <div class="span4">
       <h1>
         <%= gravatar_for @user %>
         <%= yield(:title) %>
       </h1>
-    </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+    </div>
     <div class="span8">
+    	<%= render 'follow_form' if signed_in? %>
 	    <% if @microposts.any? %>
 	      	<h3>Microposts (<%= @microposts.count %>)</h3>
 	      	<ol class="microposts">
@@ -23,5 +26,4 @@
 	      <%= will_paginate @microposts %>
 	    <% end %>
 	</div>
-  </aside>
 </div>
