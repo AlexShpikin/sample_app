@@ -34,6 +34,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all.paginate(:page => params[:page], :per_page => 10)
   end
+  def userfollowers(user_id)
+      Relationship.where(followed_id:user_id).count
+  end
   def delete
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."

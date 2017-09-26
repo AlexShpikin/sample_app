@@ -96,9 +96,10 @@ RSpec.describe User, type: :model do
       before { user.follow!(second_user) }      
       it { expect(user.following? second_user).to be_truthy }
     end
-
-
-
   end
-
+  describe 'user unfollow!' do
+    let(:second_user) { FactoryGirl.create :user }
+    before { user.follow!(second_user) }
+    it { expect(user.unfollow! second_user ).to be_truthy}
+  end
 end
