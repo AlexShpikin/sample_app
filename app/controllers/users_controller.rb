@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
   end
-  def create 
+  def create
   	@user = User.new(user_params)
   	if @user.save
   		flash[:success] = 'Welcome to the Sample App!'
@@ -72,5 +72,5 @@ class UsersController < ApplicationController
       unless correct_user.admin?
         redirect_to root_url
       end
-    end	
+    end
 end

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 	has_many :microposts, dependent: :destroy
-	has_many :relationships, foreign_key: "followed_id", dependent: :destroy
+	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 	has_many :followed_users, through: :relationships, source: :followed
 	#has_many :reverse_relationships, foreign_key: "followed_id",
     #                               class_name:  "Relationship",
@@ -24,12 +24,10 @@ class User < ApplicationRecord
 	    Micropost.from_users_followed_by(self)
 	end
 	def following?(other_user)
-		relationships.find_by(followed_id: other_user.id)
+		relationships.find_by(followed_id: other_user.id).present?
 	end
 	def follow!(other_user)
-		#puts other_user.id
-		#puts self.id
-		relationships.create!(followed_id: other_user.id, follower_id: self.id)
+		Relationship.create!(followed: other_user, follower: self)
 	end
 	def unfollow!(other_user)
 		relationships.find_by(followed_id: other_user.id).destroy!

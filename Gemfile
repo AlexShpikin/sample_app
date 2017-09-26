@@ -13,6 +13,7 @@ gem 'rails', '~> 5.1.4'
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'rspec-rails', '3.6.1'
+  gem 'byebug'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -49,6 +50,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 group :development do

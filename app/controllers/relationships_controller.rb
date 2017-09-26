@@ -4,9 +4,7 @@ class RelationshipsController < ApplicationController
   def create
     puts "=================="
     puts current_user.id
-    params = 99
-    #@user = User.find(params[:relationship][:followed_id])
-    @user = User.find(99)
+    @user = User.find(params[:relationship][:followed_id])
     current_user.follow!(@user)
     #puts current_user.follow!(@user)
     #respond_to do |format|

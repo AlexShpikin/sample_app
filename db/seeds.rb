@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create_with(
+  name:     "Example User",
+  password: "foobar",
+  password_confirmation: "foobar",
+  admin: true).find_or_create_by(email: "example@railstutorial.org")
+
+
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password  = "password"
+  User.create_with(name:     name,
+               password: password,
+               password_confirmation: password,
+              admin: false).find_or_create_by(email: email)
+end
